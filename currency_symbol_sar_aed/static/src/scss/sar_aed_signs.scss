@@ -1,0 +1,7 @@
+// U+20C1 SAUDI RIYAL SIGN and U+20C3 UAE DIRHAM SIGN, for the many devices
+// whose fonts cannot draw them yet. Only these two code points come from it.
+@font-face {
+    font-family: 'SAR AED Signs';
+    src: url('/currency_symbol_sar_aed/static/fonts/sar_aed_signs.ttf') format('truetype');
+    unicode-range: U+20C1, U+20C3;
+}

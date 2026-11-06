@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">Ziina Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position="inside">
+                <group invisible="code != 'ziina'">
+                    <field name="ziina_api_key" string="API Key"
+                           required="code == 'ziina' and state != 'disabled'" password="True"/>
+                    <field name="ziina_webhook_url" string="Webhook URL" widget="CopyClipboardChar"/>
+                    <field name="ziina_webhook_secret" string="Webhook Secret" password="True"/>
+                    <div colspan="2">
+                        <button name="action_ziina_register_webhook" type="object"
+                                string="Register Webhook" class="btn-secondary"
+                                invisible="not ziina_api_key"
+                                confirm="Ziina keeps one webhook per account. Registering this one replaces the webhook of any other shop using the same Ziina account. Continue?"/>
+                    </div>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

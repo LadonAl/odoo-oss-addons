@@ -1,0 +1,13 @@
+Each addon in this repository carries its own license, named in the
+`license` key of its __manifest__.py:
+
+* currency_rate_update_cbuae  AGPL-3.0  LICENSES/AGPL-3.0.txt
+* currency_symbol_sar_aed     LGPL-3.0  LICENSES/LGPL-3.0.txt (with LICENSES/GPL-3.0.txt)
+* payment_ziina               LGPL-3.0  LICENSES/LGPL-3.0.txt (with LICENSES/GPL-3.0.txt)
+
+The font bundled in currency_symbol_sar_aed/static/fonts/ is a modified
+version of the Saudi Riyal Font by Emran Alhaddad, licensed under the SIL Open
+Font License 1.1, and includes the dirham sign of the MIT-licensed dirham
+package: see currency_symbol_sar_aed/static/fonts/LICENSE.txt.
+
+Copyright (C) 2026 LadonAl Labz

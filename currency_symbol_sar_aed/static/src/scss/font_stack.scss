@@ -1,0 +1,18 @@
+// Odoo builds the backend's and the website's font stacks with this function
+// (web/static/src/scss/utils.scss); this is the same function with
+// 'SAR AED Signs' put first. Chrome on Windows draws U+20C3 as a missing-glyph
+// box when an installed font such as Segoe UI comes before the font that has
+// it, so ours has to lead; its unicode-range limits it to the two signs.
+// Not for reports: wkhtmltopdf would then lose the report font for all text.
+@function o-add-unicode-support-font($font, $index: false) {
+    $-with-support-font: ('SAR AED Signs',);
+    @for $i from 1 through length($font) {
+        $-part: nth($font, $i);
+        @if $i == $index or $-part == serif or $-part == sans-serif {
+            $-with-support-font: append($-with-support-font, 'Odoo Unicode Support Noto', $separator: comma);
+        }
+        $-with-support-font: append($-with-support-font, $-part, $separator: comma);
+    }
+
+    @return $-with-support-font;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Both central banks put the sign before the amount, in every language. -->
+    <record id="base.SAR" model="res.currency">
+        <field name="symbol">&#x20C1;</field>
+        <field name="position">before</field>
+    </record>
+    <record id="base.AED" model="res.currency">
+        <field name="symbol">&#x20C3;</field>
+        <field name="position">before</field>
+    </record>
+</odoo>

@@ -1,0 +1,34 @@
+// Reports keep their own fonts first; the signs come in as a fallback.
+//
+// Browsers (HTML preview, portal): the company layout's font gets
+// 'SAR AED Signs' appended (report_templates.xml); the body font of the other
+// layouts already lists 'Odoo Unicode Support Noto', which gets our faces too.
+// The report bundle declares that family at these weights and styles
+// (web/static/fonts/fonts.scss) and a browser only looks among the faces of
+// the weight and style it picked, so ours exist at each of them, and only
+// those, so the choice of face for other text does not change.
+@each $-style in (normal, italic) {
+    @each $-weight in (100, 300, 400, 700, 900) {
+        @font-face {
+            font-family: 'Odoo Unicode Support Noto';
+            src: url('/currency_symbol_sar_aed/static/fonts/sar_aed_signs.ttf') format('truetype');
+            font-weight: $-weight;
+            font-style: $-style;
+            unicode-range: U+20C1, U+20C3;
+        }
+    }
+}
+
+// wkhtmltopdf (QtWebKit) never walks the CSS font list for a missing glyph:
+// it asks Qt, which knows the system fonts plus the webfonts the page has
+// loaded, and it loads a webfont only when some text uses it first-choice.
+// This hidden text does, so every sign in the PDF finds the font.
+// Pinned to the top so it cannot push the content onto an extra page.
+body::after {
+    content: '\20C1\20C3';
+    font-family: 'SAR AED Signs';
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}

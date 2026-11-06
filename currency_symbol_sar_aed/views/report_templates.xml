@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Report layouts set the company's report font (Lato, Roboto...) with no
+         fallback, so a browser showing a report (HTML preview, portal) would
+         never reach our font. PDFs: see static/src/scss/report.scss. -->
+    <template id="styles_company_report" inherit_id="web.styles_company_report">
+        <xpath expr="//t[@t-esc='font']" position="after"><t>, 'SAR AED Signs'</t></xpath>
+    </template>
+</odoo>

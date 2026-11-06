@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- Disabled until an API key is set; the install hook copies it to every company. -->
+    <record id="payment_provider_ziina" model="payment.provider">
+        <field name="name">Ziina</field>
+        <field name="code">ziina</field>
+        <field name="image_128" type="base64" file="payment_ziina/static/description/icon.png"/>
+        <field name="module_id" ref="base.module_payment_ziina"/>
+        <field name="redirect_form_view_id" ref="redirect_form"/>
+        <!-- Ziina's page offers cards, Apple Pay and Google Pay: one option in Odoo. -->
+        <field name="payment_method_ids" eval="[Command.set([ref('payment.payment_method_card')])]"/>
+    </record>
+
+</odoo>
